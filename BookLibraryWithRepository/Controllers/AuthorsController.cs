@@ -15,7 +15,7 @@ namespace RespositoryPatternWithUOW.Api.Controllers
             _repo = repo;
         }
 
-        [HttpGet("get-by-id/{id}")]
+        [HttpGet("GetById/{id}")]
         public IActionResult GetById(int id)
         {
             return Ok(_repo.GetByIdAsync(id));

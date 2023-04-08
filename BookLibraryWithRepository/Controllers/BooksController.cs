@@ -17,13 +17,13 @@ namespace RespositoryPatternWithUOW.Api.Controllers
             _repo = repo;
         }
 
-        [HttpGet("get-by-id/{id}")]
+        [HttpGet("GetById/{id}")]
         public IActionResult GetById(int id)
         {
             return Ok(_repo.GetById(id));
         }
 
-        [HttpGet("get-all")]
+        [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
             return Ok(_repo.GetAll());
@@ -36,10 +36,10 @@ namespace RespositoryPatternWithUOW.Api.Controllers
             return Ok(_repo.Find(b => b.Title == title, new[] { "Author" }));
         }
 
-        [HttpGet("GetOrdered")]
-        public IActionResult GetOrdered()
+        [HttpGet("GetOrderedByTitle/{title}")]
+        public IActionResult GetOrdered(string title)
         {
-            return Ok(_repo.FindAll(b => b.Title.Contains("New Book"), null, null, b => b.Id, OrderBy.Descending));
+            return Ok(_repo.FindAll(b => b.Title.Contains(title), null, null, b => b.Id, OrderBy.Descending));
         }
 
         [HttpPost("add-book")]
